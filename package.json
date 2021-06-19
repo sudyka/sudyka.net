@@ -1,10 +1,12 @@
 {
-  "name": "sudykaNet",
+  "name": "sudyka.net",
+  "homepage": "http://sudyka.github.io/sudyka.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.14.6",
     "bootstrap": "^5.0.1",
+    "gh-pages": "^3.2.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.1",
     "react-dom": "^17.0.2",
@@ -20,10 +22,12 @@
     "@testing-library/user-event": "^13.1.9"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -b master -d build",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
