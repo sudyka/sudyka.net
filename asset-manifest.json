@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sudyka.net/static/css/main.ef2ad4ac.chunk.css",
-    "main.js": "/sudyka.net/static/js/main.8542fe92.chunk.js",
-    "main.js.map": "/sudyka.net/static/js/main.8542fe92.chunk.js.map",
+    "main.js": "/sudyka.net/static/js/main.79486150.chunk.js",
+    "main.js.map": "/sudyka.net/static/js/main.79486150.chunk.js.map",
     "runtime-main.js": "/sudyka.net/static/js/runtime-main.9aa4b4a4.js",
     "runtime-main.js.map": "/sudyka.net/static/js/runtime-main.9aa4b4a4.js.map",
     "static/js/2.118a65f9.chunk.js": "/sudyka.net/static/js/2.118a65f9.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.9aa4b4a4.js",
     "static/js/2.118a65f9.chunk.js",
     "static/css/main.ef2ad4ac.chunk.css",
-    "static/js/main.8542fe92.chunk.js"
+    "static/js/main.79486150.chunk.js"
   ]
 }
