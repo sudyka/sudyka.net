@@ -1,0 +1,145 @@
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  'fantasy':    #cf9,
+  'noir':       #c9f,
+  'sci-fi':     #9cf,
+  'weird-west': #c60,
+  'grey':       #999,
+);
+
+@import "bootstrap/scss/bootstrap";
+
+.app {
+  text-align: center;
+}
+
+.body {
+  background-color: #333;
+  min-height: 80vmin;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #ccc;
+}
+
+.brand {
+  color: #ccc;
+  font-family: vt323regular;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: #fff;
+}
+
+.card {
+  padding: 0em;
+}
+
+.cursor {
+  height: 4px;
+  margin-bottom: -4px;
+  width: 8px;
+  background: #ccc;
+  opacity: 0;
+  display: inline-block;
+  animation: blink 1s linear infinite alternate;
+}
+
+.footer {
+  background-color: #333;
+  min-height: 10vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  color: #ccc;
+}
+
+.header {
+  background-color: #333;
+  min-height: 10vmin;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+}
+
+.link {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.react-link {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+.react-link:hover {
+  color: #00cafa;
+}
+
+.react-logo {
+  height: 1em;
+  pointer-events: none;
+}
+
+.class {
+  width: 15em;
+}
+
+.subclass {
+  width: 15em;
+}
+
+.noir-subclass {
+  color: #c9f;
+  width: 15em;
+}
+
+@font-face {
+  font-family: 'vt323regular';
+  src: url('./fonts/vt323-regular1-webfont.woff2') format('woff2'),
+       url('./fonts/vt323-regular1-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .react-logo {
+    animation: logo-spin infinite 25s linear;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
