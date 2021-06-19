@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/sudyka.net/static/css/main.ef2ad4ac.chunk.css",
-    "main.js": "/sudyka.net/static/js/main.79486150.chunk.js",
-    "main.js.map": "/sudyka.net/static/js/main.79486150.chunk.js.map",
-    "runtime-main.js": "/sudyka.net/static/js/runtime-main.9aa4b4a4.js",
-    "runtime-main.js.map": "/sudyka.net/static/js/runtime-main.9aa4b4a4.js.map",
-    "static/js/2.118a65f9.chunk.js": "/sudyka.net/static/js/2.118a65f9.chunk.js",
-    "static/js/2.118a65f9.chunk.js.map": "/sudyka.net/static/js/2.118a65f9.chunk.js.map",
-    "static/js/3.9ab04564.chunk.js": "/sudyka.net/static/js/3.9ab04564.chunk.js",
-    "static/js/3.9ab04564.chunk.js.map": "/sudyka.net/static/js/3.9ab04564.chunk.js.map",
-    "index.html": "/sudyka.net/index.html",
-    "static/css/main.ef2ad4ac.chunk.css.map": "/sudyka.net/static/css/main.ef2ad4ac.chunk.css.map",
-    "static/js/2.118a65f9.chunk.js.LICENSE.txt": "/sudyka.net/static/js/2.118a65f9.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/sudyka.net/static/media/logo.6ce24c58.svg",
-    "static/media/app.scss": "/sudyka.net/static/media/vt323-regular1-webfont.6575c32c.woff"
+    "main.css": "/static/css/main.ef2ad4ac.chunk.css",
+    "main.js": "/static/js/main.79486150.chunk.js",
+    "main.js.map": "/static/js/main.79486150.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9aa4b4a4.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9aa4b4a4.js.map",
+    "static/js/2.118a65f9.chunk.js": "/static/js/2.118a65f9.chunk.js",
+    "static/js/2.118a65f9.chunk.js.map": "/static/js/2.118a65f9.chunk.js.map",
+    "static/js/3.9ab04564.chunk.js": "/static/js/3.9ab04564.chunk.js",
+    "static/js/3.9ab04564.chunk.js.map": "/static/js/3.9ab04564.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ef2ad4ac.chunk.css.map": "/static/css/main.ef2ad4ac.chunk.css.map",
+    "static/js/2.118a65f9.chunk.js.LICENSE.txt": "/static/js/2.118a65f9.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg",
+    "static/media/app.scss": "/static/media/vt323-regular1-webfont.6575c32c.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.9aa4b4a4.js",
