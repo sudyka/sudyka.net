@@ -9,7 +9,7 @@ import Tech from './tech.js'
 
 const App = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path='/'>
           <Main />
