@@ -1,6 +1,6 @@
 {
   "name": "sudyka.net",
-  "homepage": "http://sudyka.github.io/sudyka.github.io",
+  "homepage": "http://sudyka.github.io/sudyka.net",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "start": "react-scripts start",
