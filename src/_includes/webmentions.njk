@@ -1,0 +1,44 @@
+{% if webmentions.configured %}
+{% set mentions = webmentions | mentionsFor(page.url | absolute(site.url)) %}
+<section class="webmentions" aria-labelledby="webmentions-heading">
+  <h2 id="webmentions-heading">Webmentions</h2>
+  {% if mentions.length == 0 %}
+  <p class="quiet">No webmentions yet.</p>
+  {% else %}
+  <ol class="mention-list">
+    {% for mention in mentions %}
+    <li class="h-cite mention">
+      <p class="entry-meta">
+        <span class="kind">{{ mention.type }}</span>
+        {% if mention.published %}
+        <time class="dt-published" datetime="{{ mention.published }}">{{ mention.published | readableDate }}</time>
+        {% endif %}
+      </p>
+      <p class="mention-author">
+        {% if mention.authorUrl %}
+        <a class="p-author h-card u-url" href="{{ mention.authorUrl }}">
+          {% if mention.authorPhoto %}<img class="u-photo" src="{{ mention.authorPhoto }}" alt="" width="32" height="32">{% endif %}
+          <span class="p-name">{{ mention.authorName }}</span>
+        </a>
+        {% else %}
+        <span class="p-author h-card"><span class="p-name">{{ mention.authorName }}</span></span>
+        {% endif %}
+      </p>
+      {% if mention.content %}
+      <p class="e-content p-content">{{ mention.content }}</p>
+      {% elif mention.type == "like" %}
+      <p class="e-content">Liked this.</p>
+      {% elif mention.type == "repost" %}
+      <p class="e-content">Reposted this.</p>
+      {% elif mention.type == "bookmark" %}
+      <p class="e-content">Bookmarked this.</p>
+      {% endif %}
+      {% if mention.url %}
+      <a class="u-url mention-source" href="{{ mention.url }}">Source</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+</section>
+{% endif %}

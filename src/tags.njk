@@ -1,0 +1,23 @@
+---
+pagination:
+  data: collections.categories
+  size: 1
+  alias: category
+permalink: /tags/{{ category | slugify }}/
+layout: base.njk
+eleventyComputed:
+  title: "Tagged {{ category }}"
+  summary: "Entries tagged {{ category }}."
+---
+<section class="h-feed">
+  <header class="section-head">
+    <h1 class="p-name">Tagged {{ category }}</h1>
+    <data class="u-url" value="{{ page.url }}"></data>
+  </header>
+  <div class="entry-list">
+    {% for item in collections[category] | newestFirst %}
+      {% set entryHeading = "h2" %}
+      {% include "entry.njk" %}
+    {% endfor %}
+  </div>
+</section>

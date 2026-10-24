@@ -1,0 +1,70 @@
+---
+layout: base.njk
+summary: A personal home base for writing, and a launchpad for projects that are just getting started.
+---
+<section class="h-card profile" aria-labelledby="profile-name">
+  <img
+    class="u-photo"
+    src="{{ site.photo | url }}"
+    alt="{{ site.photoAlt }}"
+    width="526"
+    height="325"
+    fetchpriority="high"
+    decoding="async"
+  >
+  <div class="profile-body">
+    <h1 id="profile-name" class="p-name">{{ site.name }}</h1>
+    <p class="profile-url"><a class="u-url u-uid" href="{{ "/" | url }}">{{ site.domain }}</a></p>
+    <p class="p-note">{{ site.note }}</p>
+    {% if site.email %}
+    <p><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    {% endif %}
+    <ul class="profile-links">
+      {% for profile in site.profiles %}
+      <li><a class="u-url" rel="me" href="{{ profile.url }}">{{ profile.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="h-feed band" aria-labelledby="recent-heading">
+  <div class="section-head">
+    <h2 id="recent-heading" class="p-name">Recent</h2>
+    <data class="u-url" value="{{ "/" | url }}"></data>
+    <p class="section-links">
+      <a href="{{ "/posts/" | url }}">Posts</a>
+      <a href="{{ "/notes/" | url }}">Notes</a>
+    </p>
+  </div>
+  {% set recent = collections.feed | limit(6) %}
+  {% if recent.length == 0 %}
+  <p class="quiet">Nothing published yet.</p>
+  {% else %}
+  <div class="entry-list">
+    {% for item in recent %}
+      {% set entryHeading = "h3" %}
+      {% include "entry.njk" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<section class="band" aria-labelledby="projects-heading">
+  <div class="section-head">
+    <h2 id="projects-heading">Projects</h2>
+    <p class="section-links"><a href="{{ "/projects/" | url }}">All projects</a></p>
+  </div>
+  {% if collections.projects.length == 0 %}
+  <p class="quiet">No projects yet.</p>
+  {% else %}
+  <div class="project-grid">
+    {% for project in collections.projects %}
+    <a class="project-card" href="{{ project.url | url }}">
+      <span class="pill">{{ project.data.status or "exploring" }}</span>
+      <h3>{{ project.data.title }}</h3>
+      {% if project.data.summary %}<p>{{ project.data.summary }}</p>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

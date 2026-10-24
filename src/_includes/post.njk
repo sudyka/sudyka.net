@@ -1,0 +1,53 @@
+---
+layout: base.njk
+---
+<article class="h-entry">
+  <header class="entry-header">
+    {% if kind == "note" %}
+    <h1 class="sr-only">Note from {{ page.date | readableDate }}</h1>
+    {% endif %}
+    <p class="entry-meta">
+      <span class="kind">{% if kind == "note" %}note{% else %}post{% endif %}</span>
+      {% if kind == "note" %}
+      <a class="u-url u-uid" href="{{ page.url }}">
+        <time class="dt-published" datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      </a>
+      {% else %}
+      <time class="dt-published" datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      {% endif %}
+      {% if updated %}
+      <time class="dt-updated" datetime="{{ updated | isoDate }}">Updated {{ updated | readableDate }}</time>
+      {% endif %}
+      {% if sample %}<span class="pill">sample</span>{% endif %}
+    </p>
+    {% if kind != "note" %}
+    <h1 class="p-name"><a class="u-url u-uid" href="{{ page.url }}">{{ title }}</a></h1>
+    {% endif %}
+    {% if sample %}
+    <p class="banner" role="note">Sample content. This is a placeholder so the structure is visible.</p>
+    {% endif %}
+  </header>
+  {% if kind == "note" %}
+  <div class="e-content p-name prose">
+    {{ content | safe }}
+  </div>
+  {% else %}
+  {% if summary %}<p class="p-summary lede">{{ summary }}</p>{% endif %}
+  <div class="e-content prose">
+    {{ content | safe }}
+  </div>
+  {% endif %}
+  <footer class="entry-footer">
+    {% set authorCompact = false %}
+    {% include "author.njk" %}
+    {% set visibleTags = tags | publicTags %}
+    {% if visibleTags.length %}
+    <p class="tag-list">
+      {% for tag in visibleTags %}
+      <a class="p-category" href="{{ ("/tags/" + (tag | slugify) + "/") | url }}">{{ tag }}</a>
+      {% endfor %}
+    </p>
+    {% endif %}
+  </footer>
+</article>
+{% include "webmentions.njk" %}

@@ -1,0 +1,17 @@
+{% set slug = page.inputPath | projectSlug %}
+{% if slug %}
+{% set family = collections.all | projectFamily(slug) %}
+{% if family.length > 1 %}
+<nav class="subnav" aria-label="In this project">
+  <ul>
+    {% for member in family %}
+    <li>
+      <a href="{{ member.url | url }}"{% if member.url == page.url %} aria-current="page"{% endif %}>
+        {% if member.url == "/projects/" + slug + "/" %}Overview{% else %}{{ member.data.title }}{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}
+{% endif %}

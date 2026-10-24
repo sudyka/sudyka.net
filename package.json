@@ -1,50 +1,21 @@
 {
   "name": "sudyka.net",
-  "homepage": "http://sudyka.github.io/sudyka.net",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
+  "description": "Personal site for sudyka.net, built with Eleventy.",
+  "homepage": "https://sudyka.net",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\" && eleventy && node scripts/check-indieweb.js",
+    "check": "node scripts/check-indieweb.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
-    "@babel/core": "^7.14.6",
-    "bootstrap": "^5.0.1",
-    "gh-pages": "^3.2.2",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.0.0-beta.1",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "sass": "^1.35.1",
-    "typescript": "^4.3.4",
-    "web-vitals": "^2.0.1"
+    "@11ty/eleventy": "3.1.7"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^13.1.9"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "microformats-parser": "2.0.6"
   }
 }

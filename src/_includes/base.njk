@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ site.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ documentTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}">
+  <link rel="canonical" href="{{ page.url | absolute(site.url) }}">
+  <link rel="icon" href="{{ "/assets/favicon.svg" | url }}" type="image/svg+xml">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12110e">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4efe4">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https:; style-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <meta property="og:title" content="{{ documentTitle }}">
+  <meta property="og:description" content="{{ metaDescription }}">
+  <meta property="og:url" content="{{ page.url | absolute(site.url) }}">
+  <meta property="og:type" content="{% if kind == 'article' or kind == 'note' or kind == 'project' %}article{% else %}website{% endif %}">
+  <meta property="og:image" content="{{ site.photo | url | absolute(site.url) }}">
+  <meta property="og:image:alt" content="{{ site.photoAlt }}">
+  <meta name="twitter:card" content="summary">
+  {% include "indieweb-links.njk" %}
+  <link rel="stylesheet" href="{{ "/assets/css/site.css" | url }}?v={{ cssHash }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="{{ "/" | url }}">
+        <span class="sr-only">Home</span>
+        <span aria-hidden="true"><span class="prompt-host">sudyka</span><span class="prompt-path">:{{ page.url | promptPath }}&gt;</span><span class="cursor"></span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          {% for item in site.nav %}
+          <li>
+            <a href="{{ item.href | url }}"{% if page.url | isCurrent(item.href) %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="shell" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>© 2021–{{ buildYear }} {{ site.name }}</p>
+      <nav aria-label="Feeds and profiles">
+        <a href="{{ "/feed.xml" | url }}">Atom</a>
+        <a href="{{ "/feed.rss" | url }}">RSS</a>
+        <a href="{{ "/feed.json" | url }}">JSON</a>
+        {% for profile in site.profiles %}
+        <a rel="me" href="{{ profile.url }}">{{ profile.name }}</a>
+        {% endfor %}
+        <a href="https://www.11ty.dev/">Eleventy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
