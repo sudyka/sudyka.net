@@ -1,0 +1,41 @@
+{% set itemKind = item.data.kind %}
+{% set itemAbsolute = item.url %}
+<article class="h-entry entry">
+  <p class="entry-meta">
+    <span class="kind">{% if itemKind == "note" %}note{% elif itemKind == "project" %}project{% else %}post{% endif %}</span>
+    <a class="u-url u-uid" href="{{ itemAbsolute }}">
+      <time class="dt-published" datetime="{{ item.date | isoDate }}">{{ item.date | readableDate }}</time>
+    </a>
+    {% if item.data.updated %}
+    <time class="dt-updated" datetime="{{ item.data.updated | isoDate }}">Updated {{ item.data.updated | readableDate }}</time>
+    {% endif %}
+    {% if item.data.sample or item.data.status == "sample" %}<span class="pill">sample</span>{% endif %}
+    {% if item.data.status and item.data.status != "sample" %}<span class="pill">{{ item.data.status }}</span>{% endif %}
+  </p>
+  {% if itemKind == "note" %}
+  <div class="e-content p-name">
+    {{ item.templateContent | safe }}
+  </div>
+  {% else %}
+  {% if entryHeading == "h3" %}
+  <h3 class="p-name"><a href="{{ item.url | url }}">{{ item.data.title }}</a></h3>
+  {% else %}
+  <h2 class="p-name"><a href="{{ item.url | url }}">{{ item.data.title }}</a></h2>
+  {% endif %}
+  {% if item.data.summary %}
+  <p class="p-summary e-content">{{ item.data.summary }}</p>
+  {% elif item.templateContent %}
+  <div class="e-content">{{ item.templateContent | safe }}</div>
+  {% endif %}
+  {% endif %}
+  {% set authorCompact = true %}
+  {% include "author.njk" %}
+  {% set visibleTags = item.data.tags | publicTags %}
+  {% if visibleTags.length %}
+  <p class="tag-list">
+    {% for tag in visibleTags %}
+    <a class="p-category" href="{{ ("/tags/" + (tag | slugify) + "/") | url }}">{{ tag }}</a>
+    {% endfor %}
+  </p>
+  {% endif %}
+</article>

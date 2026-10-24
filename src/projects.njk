@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: Projects
+summary: A launchpad. Each project is a folder that can grow its own pages.
+permalink: /projects/
+---
+<section class="h-feed">
+  <header class="section-head">
+    <h1 class="p-name">Projects</h1>
+    <data class="u-url" value="{{ page.url }}"></data>
+    <p class="lede">Things being explored, built, or kept around. A project can have its own pages.</p>
+  </header>
+  {% if collections.projects.length == 0 %}
+  <p class="quiet">No projects yet.</p>
+  {% else %}
+  <div class="entry-list">
+    {% for item in collections.projects %}
+      {% set entryHeading = "h2" %}
+      {% include "entry.njk" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

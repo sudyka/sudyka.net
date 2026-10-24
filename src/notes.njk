@@ -1,0 +1,22 @@
+---
+layout: base.njk
+title: Notes
+summary: Short updates.
+permalink: /notes/
+---
+<section class="h-feed">
+  <header class="section-head">
+    <h1 class="p-name">Notes</h1>
+    <data class="u-url" value="{{ page.url }}"></data>
+    <p class="lede">Short updates, without a title.</p>
+  </header>
+  {% if collections.notes.length == 0 %}
+  <p class="quiet">No notes yet.</p>
+  {% else %}
+  <div class="entry-list">
+    {% for item in collections.notes %}
+      {% include "entry.njk" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

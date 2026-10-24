@@ -1,0 +1,23 @@
+{% if site.indieauth.authorizationEndpoint | httpUrl %}
+  <link rel="authorization_endpoint" href="{{ site.indieauth.authorizationEndpoint }}">
+{% endif %}
+{% if site.indieauth.tokenEndpoint | httpUrl %}
+  <link rel="token_endpoint" href="{{ site.indieauth.tokenEndpoint }}">
+{% endif %}
+{% if site.micropub | httpUrl %}
+  <link rel="micropub" href="{{ site.micropub }}">
+{% endif %}
+{% if site.webmention.endpoint | httpUrl %}
+  <link rel="webmention" href="{{ site.webmention.endpoint }}">
+{% endif %}
+{% if site.pingback | httpUrl %}
+  <link rel="pingback" href="{{ site.pingback }}">
+{% endif %}
+{% for profile in site.profiles %}
+  {% if profile.url | httpUrl %}
+  <link rel="me" href="{{ profile.url }}">
+  {% endif %}
+{% endfor %}
+<link rel="alternate" type="application/atom+xml" title="{{ site.feedTitle }} (Atom)" href="{{ "/feed.xml" | url }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.feedTitle }} (RSS)" href="{{ "/feed.rss" | url }}">
+<link rel="alternate" type="application/feed+json" title="{{ site.feedTitle }} (JSON Feed)" href="{{ "/feed.json" | url }}">

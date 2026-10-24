@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: Posts
+summary: Longer writing.
+permalink: /posts/
+---
+<section class="h-feed">
+  <header class="section-head">
+    <h1 class="p-name">Posts</h1>
+    <data class="u-url" value="{{ page.url }}"></data>
+    <p class="lede">Longer writing. Each post is its own page.</p>
+  </header>
+  {% if collections.posts.length == 0 %}
+  <p class="quiet">No posts yet.</p>
+  {% else %}
+  <div class="entry-list">
+    {% for item in collections.posts %}
+      {% set entryHeading = "h2" %}
+      {% include "entry.njk" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

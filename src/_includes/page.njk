@@ -1,0 +1,54 @@
+---
+layout: base.njk
+---
+{% if kind == "project" %}
+<article class="h-entry">
+  <header class="entry-header">
+    <p class="entry-meta">
+      <span class="kind">project</span>
+      {% if showDate %}
+      <time class="dt-published" datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      {% endif %}
+      {% if updated %}
+      <time class="dt-updated" datetime="{{ updated | isoDate }}">Updated {{ updated | readableDate }}</time>
+      {% endif %}
+      {% if sample or status == "sample" %}<span class="pill">sample</span>{% endif %}
+      {% if status and status != "sample" %}<span class="pill">{{ status }}</span>{% endif %}
+    </p>
+    <h1 class="p-name"><a class="u-url u-uid" href="{{ page.url }}">{{ title }}</a></h1>
+    {% if summary %}<p class="p-summary lede">{{ summary }}</p>{% endif %}
+    {% if sample or status == "sample" %}
+    <p class="banner" role="note">Sample project. Safe to delete once a real one exists.</p>
+    {% elif status == "archived" %}
+    <p class="banner" role="note">Archived from the 2021 site. Kept so the old notes are not lost.</p>
+    {% endif %}
+  </header>
+  {% include "project-nav.njk" %}
+  <div class="e-content prose">
+    {{ content | safe }}
+  </div>
+  <footer class="entry-footer">
+    {% set authorCompact = false %}
+    {% include "author.njk" %}
+    {% set visibleTags = tags | publicTags %}
+    {% if visibleTags.length %}
+    <p class="tag-list">
+      {% for tag in visibleTags %}
+      <a class="p-category" href="{{ ("/tags/" + (tag | slugify) + "/") | url }}">{{ tag }}</a>
+      {% endfor %}
+    </p>
+    {% endif %}
+  </footer>
+</article>
+{% include "webmentions.njk" %}
+{% else %}
+<article class="page">
+  <header class="entry-header">
+    <h1>{{ title }}</h1>
+    {% if summary %}<p class="lede">{{ summary }}</p>{% endif %}
+  </header>
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+</article>
+{% endif %}
